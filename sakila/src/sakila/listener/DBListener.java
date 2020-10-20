@@ -6,15 +6,8 @@ import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class DBListener implements ServletContextListener {
-
-    public DBListener() {
-        // TODO Auto-generated constructor stub
-    }
-
-    public void contextDestroyed(ServletContextEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
-
+    public DBListener() {}
+    public void contextDestroyed(ServletContextEvent arg0)  {}
     public void contextInitialized(ServletContextEvent arg0)  { 
          System.out.println("DBListener.contextInitialized() 실행");
          try {
@@ -25,5 +18,4 @@ public class DBListener implements ServletContextListener {
 			e.printStackTrace();
 		}
     }
-	
 }
