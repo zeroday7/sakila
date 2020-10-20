@@ -4,14 +4,16 @@ import java.sql.Connection;
 import sakila.vo.Stats;
 
 public class StatsDao {
-	// rs.next()있으면 true, 없으면 false
-	public boolean selectDay(Connection conn, Stats stats) throws Exception {
+	
+	public Stats selectDay(Connection conn, Stats stats) throws Exception {
+		Stats returnStats = null;
 		/*
-		if(rs.next()){
-			return true; // update
+		if(rs.next()) {
+			returnStats = new Stats();
+			//....
 		}
 		*/
-		return false; // insert
+		return returnStats; 
 	}
 	//
 	public void insertStats(Connection conn, Stats stats) throws Exception {
