@@ -13,7 +13,7 @@ public class StatsListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent se)  { 
         if(se.getSession().isNew()) {
         	statsService = new StatsService();
-        	statsService.countStats();
+        	statsService.addStats();
         }
     }
     public void sessionDestroyed(HttpSessionEvent se)  {}
