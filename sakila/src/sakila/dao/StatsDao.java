@@ -4,10 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import sakila.service.StatsQuery;
+import sakila.query.StatsQuery;
 import sakila.vo.Stats;
 
 public class StatsDao {
+	public int selectTotalCount(Connection conn) throws Exception {
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_TOTAL_COUNT);
+		ResultSet rs = stmt.executeQuery();
+		int totalCount = 0;
+		if(rs.next()) {
+			totalCount = rs.getInt("SUM(count)");
+		}
+		rs.close();
+		stmt.close();
+		return totalCount;
+	}
 	// paramStats의 날짜를 받아와 그날에 접속자가 있었는지 없었는지 판별하는 메서드
 	// 있으면 날짜와 그 날의 접속자 수를 Stats VO로 반환하며, 없으면 null을 반환함
 	public Stats selectStatsOne(Connection conn, Stats paramStats) throws Exception {

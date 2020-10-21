@@ -3,6 +3,8 @@ package sakila.service;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import sakila.dao.StatsDao;
 import sakila.util.DBUtil;
@@ -11,15 +13,15 @@ import sakila.vo.Stats;
 public class StatsService {
 	StatsDao statsDao;
 
-	// 오늘의 방문자 수를 조회하는 메서드
+	// 오늘의 방문자 수 dao메서드 호출 Stats + 총 방문자 수 dao메서드 호출 int -> Map
 	// Stats 객체를 반환: stats.getDay() 메서드로 방문날짜, stats.getCount()로 방문횟수 조회 가능
-	public Stats getStats() {
+	public Map<String,Object> getStats() { // public Map<String,Object> getStats()
 		System.out.println("debug: method-begin: StatsService.getStats()");
 		statsDao = new StatsDao();
 
 		// 리스너에서 Class.forName()을 이미 호출하여 JDBC를 로드했으므로 따로 적을 필요는 없음
 		Connection conn = null;
-		Stats returnStats = null;
+		Map<String,Object> map = new HashMap<>();
 
 		try {
 			// DBUtil을 사용해 DB에 연결함
@@ -36,9 +38,13 @@ public class StatsService {
 			System.out.println("debug: instance-variable: todayStats=" + todayStats);
 
 			System.out.println("debug: message: 'Execute SQL transection...'");
-			returnStats = statsDao.selectStatsOne(conn, todayStats);
+			Stats returnStats = statsDao.selectStatsOne(conn, todayStats);
 			System.out.println("debug: instance-variable: returnStats=" + returnStats);
-
+			map.put("returnStats", returnStats);
+			
+			int totalCount = statsDao.selectTotalCount(conn);
+			map.put("totalCount", totalCount);
+			
 			conn.commit();
 			System.out.println("debug: message: 'Execute successfully: Connect DB and SQL transection'");
 		} catch (Exception e) { // DB 연결 혹은 쿼리 작업 중 예외 발생 시
@@ -65,7 +71,7 @@ public class StatsService {
 		}
 
 		System.out.println("debug: method-end: StatsService.getStats()");
-		return returnStats;
+		return map;
 	}
 
 	// 방문자 수를 1 더하는 메서드

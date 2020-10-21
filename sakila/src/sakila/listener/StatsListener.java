@@ -11,7 +11,8 @@ public class StatsListener implements HttpSessionListener {
     private StatsService statsService;
 	public StatsListener() {}
     public void sessionCreated(HttpSessionEvent se)  { 
-        if(se.getSession().isNew()) {
+    	System.out.println("StatsListener.sessionCreated()");
+    	if(se.getSession().isNew()) {
         	statsService = new StatsService();
         	statsService.addStats();
         }
