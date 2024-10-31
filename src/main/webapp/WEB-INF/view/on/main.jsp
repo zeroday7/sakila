@@ -11,7 +11,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	hello!
+<body class="container">
+	<h1>main</h1>
+	<div>${loginStaff.username}님 반갑습니다.</div>
 </body>
 </html>
