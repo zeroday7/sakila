@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.StaffMapper">
-	<select id = "login"
-			parameterType="com.example.sakila.vo.Staff"
+	
+	<select id="selectStaffOne" parameterType="java.lang.Integer"
+			resultType="com.example.sakila.vo.Staff">
+		<!-- 조인시 resultType은 java.util.Map -->
+		SELECT
+			staff_id staffId
+			, first_name firstName
+			, last_name lastName
+			, address_id addressId
+			, email
+			, store_id storeId
+			, username
+			, last_update lastUpdate
+		FROM staff
+		WHERE staff_id = #{staffId}
+	</select>
+	
+	<select id = "login" parameterType="com.example.sakila.vo.Staff"
 			resultType="com.example.sakila.vo.Staff">
 		SELECT 
 			staff_id staffId

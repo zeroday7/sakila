@@ -13,18 +13,22 @@ import com.example.sakila.vo.Staff;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
-@Controller
+@Slf4j 
+@Controller 
 public class LoginController {
-	@Autowired
-	private StaffMapper staffMapper;
+	@Autowired StaffMapper staffMapper;
+	
+	@GetMapping("/on/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		log.debug("로그아웃 성공");
+		return "redirect:/off/login";
+	}
 	
 	// 로그인 폼
 	@GetMapping("/off/login")
 	public String login() {
-		
 		log.debug("/off/login 실행됨.");
-		
 		return "off/login";
 	}
 	
