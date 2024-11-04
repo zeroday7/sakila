@@ -26,5 +26,8 @@
 			</div>
 		</div>
 	</div>
+	<div>
+		<a href="">정보수정</a>
+	</div>
 </body>
 </html>

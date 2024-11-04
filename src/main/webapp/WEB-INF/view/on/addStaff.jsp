@@ -89,7 +89,7 @@
 					<tr>
 						<td>userName</td>
 						<td>
-							<input type="text" name="userName" id="userName">
+							<input type="text" name="username" id="username">
 						</td>
 					</tr>
 				</table>
@@ -112,11 +112,11 @@
 			alert('lastName를 입력하세요');
 		} else if($('#email').val() == null || $('#email').val() =='') {
 			alert('email를 입력하세요');
-		} else if($('#userName').val() == null || $('#userName').val() =='') {
-			alert('userName를 입력하세요');
+		} else if($('#username').val() == null || $('#username').val() =='') {
+			alert('username를 입력하세요');
 		} else{
 			console.log('submit....');
-			// $('#addForm').submit();
+			$('#addForm').submit();
 		}
 	});
 	

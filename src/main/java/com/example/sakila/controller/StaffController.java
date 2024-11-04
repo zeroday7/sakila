@@ -1,5 +1,6 @@
 package com.example.sakila.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,13 +50,30 @@ public class StaffController {
 	@PostMapping("/on/addStaff")
 	public String addStaff(Staff staff) { // 커맨드 객체 생성-> 커맨드객체.set(reuqest.getParameter())
 		// insert호출
+		log.debug(staff.toString());
+		int row = staffMapper.insertStaff(staff);
+		log.debug("row: "+row);
+		if(row == 0) {// 입력실패시 입력페이지로 포워딩
+			return "on/addStaff";
+		}
 		return "redirect:/on/staffList";
 	}
 	
 	@GetMapping("/on/staffList")
 	public String staffList(Model model
-							, @RequestParam(defaultValue = "1") int currentPage) {
+							, @RequestParam(defaultValue = "1") int currentPage
+							, @RequestParam(defaultValue = "10") int rowPerPage) {
 		// model(staffList)
+		Map<String, Object> map = new HashMap<>();
+		int beginRow = (currentPage-1) * rowPerPage;
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		log.debug(map.toString());
+		
+		List<Staff> staffList = staffMapper.selectStaffList(map);
+		log.debug(staffList.toString());
+		
+		model.addAttribute("staffList", staffList);
 		return "on/staffList";
 	}
 	
