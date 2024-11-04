@@ -25,10 +25,10 @@
 		::: STAFF 관리 :::
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="">스탭 리스트</a>
+		<a href="${pageContext.request.contextPath}/on/staffList">스탭 리스트</a>
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="">스탭 추가</a>
+		<a href="${pageContext.request.contextPath}/on/addStaff">스탭 추가</a>
 	</li>
 	
 	<li class="list-group-item bg-light">
