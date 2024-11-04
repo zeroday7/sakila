@@ -28,6 +28,19 @@ public class StaffController {
 	@Autowired StoreMapper storeMapper;
 	@Autowired AddressMapper addressMapper;
 	
+	// active 수정
+	@GetMapping("/on/modifyStaffActive")
+	public String modifyStaffActive(Staff staff) {
+		if(staff.getActive() == 1) {
+			staff.setActive(2);
+		} else {
+			staff.setActive(1);
+		}
+		int row = staffMapper.updateStaff(staff); // 어떤 컬럼값을 수정하던  mapper메서드는 하나다!
+		return "redirect:/on/staffList";
+	}
+	
+	
 	// leftMenu.a태그, addStaff.주소검색
 	@GetMapping("/on/addStaff")
 	public String addStaff(Model model
@@ -73,7 +86,16 @@ public class StaffController {
 		List<Staff> staffList = staffMapper.selectStaffList(map);
 		log.debug(staffList.toString());
 		
+		int count = staffMapper.selectStaffCount();
+		int lastPage = count / rowPerPage;
+		if(count % rowPerPage != 0) {
+			lastPage += 1;
+		}
+		
 		model.addAttribute("staffList", staffList);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
+		
 		return "on/staffList";
 	}
 	

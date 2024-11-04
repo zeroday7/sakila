@@ -47,9 +47,9 @@
 						<td>${s.lastUpdate}</td>
 						<td>${s.active}</td>
 						<td>
-							<a href="" class="btn btn-danger">
-								<c:if test="${s.active==1}">비활성화</c:if>
-								<c:if test="${s.active==0}">활성화</c:if>
+							<a href="${pageContext.request.contextPath}/on/modifyStaffActive?staffId=${s.staffId}&active=${s.active}" class="btn btn-danger">
+								<c:if test="${s.active==1}">사용금지로(2로) 변경</c:if>
+								<c:if test="${s.active==2}">사용가능으로(1로) 변경</c:if>
 							</a>
 						</td>
 					</tr>
