@@ -24,10 +24,16 @@
 			<div>
 				${staff}
 			</div>
+			
+			<div>
+				<a href="" class="btn btn-light">비빌번호 수정</a>
+				<a href="" class="btn btn-light">이메일 수정</a>
+				<a href="" class="btn btn-light">주소 수정</a>
+				<a href="" class="btn btn-light">STORE 수정</a>
+			</div>
+			
 		</div>
 	</div>
-	<div>
-		<a href="">정보수정</a>
-	</div>
+	
 </body>
 </html>
