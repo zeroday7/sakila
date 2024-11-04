@@ -5,13 +5,13 @@
 		UPDATE staff
 		<set>
 			<if test="addressId != null and addressId != ''">
-				addressId = #{addressId},
+				address_id = #{addressId},
 			</if>
 			<if test="email != null and email != ''">
 				email = #{email},
 			</if>
 			<if test="storeId != null and storeId != ''">
-				storeId = #{storeId},
+				store_id = #{storeId},
 			</if>
 			<if test="active != null and active != ''">
 				active = #{active},
