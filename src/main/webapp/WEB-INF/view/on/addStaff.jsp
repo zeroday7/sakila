@@ -23,11 +23,25 @@
 			<h1>ADD STAFF</h1>
 			
 			<h2>주소 검색</h2>
-			<form action="${pageContext.request.contextPath}/on/addStaff" method="get">
-				<input type="text" name="searchAddress">
-				<button type="submit">주소검색</button>
+			<form id="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
+				<input type="text" name="searchAddress" id="searchAddress">
+				<button type="button" id="btnAddress">주소검색</button>
 			</form>
 			
+			<div>
+				<h2>주소를 선택하세요</h2>
+				<select id="resultAddress" size="10">
+					<c:forEach var="a" items="${addressList}">
+						<option value="${a.addressId}">
+							(ADDRESS ID : ${a.addressId}) ${a.address}
+						</option>
+					</c:forEach>
+				</select>
+				<br>
+				<button type="button" id="btnAddrSel">주소선택</button>
+			</div>
+			
+			<h2>입력 폼</h2>
 			<form action="${pageContext.request.contextPath}/on/addStaff" method="post">
 				<table class="table" style="width: 80%">
 					<tr>
@@ -41,9 +55,34 @@
 							</select>
 						</td>
 					</tr>
+					
+					<tr>
+						<td>addressId</td>
+						<td>
+							<input type="text" name="addressId" id="addressId" readonly>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
 </body>
+<script>
+	$('#btnAddrSel').click(function() {
+		console.log($('#resultAddress').val());
+		if($('#resultAddress').val() == null || $('#resultAddress').val() =='') {
+			alert('주소 선택을 먼저 하세요');
+		} else {
+			$('#addressId').val($('#resultAddress').val());
+		}
+	});
+
+	$('#btnAddress').click(function(){
+		if($('#searchAddress').val() == "") {
+			alert('주소 검색어를 입력하세요');
+		} else {
+			$('#formAddress').submit();
+		}
+	});
+</script>
 </html>
