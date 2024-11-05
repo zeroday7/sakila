@@ -21,58 +21,58 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>ADD ACTOR</h1>
-			<table class="table">
-				<tr>
-					<td>firstName</td>
-					<td><input type="text" name="firstName"></td>
-				</tr>
-				<tr>
-					<td>lastName</td>
-					<td><input type="text" name="lastName"></td>
-				</tr>
-				<tr>
-					<td>file</td>
-					<td>
-						<div id="fileDiv">
-							<button type="button" id="btnAddFile">파일추가</button>
-							<button type="button" id="btnRemoveFile">파일삭제</button>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<button type="button" id="btnAddActor">배우 추가</button>
+			<form id="formActor" method="post" action="${pageContext.request.contextPath}/on/addActor"
+				enctype="multipart/form-data">
+				<table class="table">
+					<tr>
+						<td>firstName</td>
+						<td><input type="text" name="firstName"></td>
+					</tr>
+					<tr>
+						<td>lastName</td>
+						<td><input type="text" name="lastName"></td>
+					</tr>
+					<tr>
+						<td>file</td>
+						<td>
+							<div id="fileDiv">
+								<button type="button" id="btnAddFile">파일추가</button>
+								<button type="button" id="btnRemoveFile">파일삭제</button>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<button type="button" id="btnAddActor">배우 추가</button>
+			</form>
 		</div>
 	</div>
 </body>
 <script>
-	$('#btnAddFile').click(function() {
-		/* 자바스크립트 API 사용
-		let arr = $('.actorFile');
-		arr.forEach(function(item, index) {
-			
-		});
-		*/
-		
-		// JQuery API 사용
-		
-		let flag = true;
-		$('.actorFile').each(function() { // 매개값(index, item) , item == $(this)
-			if($(this).val() == '') {
-				flag = false;
-			}
-		});
-		if(flag) {
-			let html = '<input type="file" name="actorFile" class="actorFile">';
-			$('#fileDiv').append(html);
-		} else {
-			alert('첨부하지않은 파일이 이미 존재합니다');
-		}
-	});
+$('#btnAddActor').click(function(){
+	if($('#firstName').val() == '' || $('#lastName').val() == '') {
+		alert('이름을 입력하세요');
+	} else if($('.actorFile').length > 0 && $('.actorFile').last().val() == '') {
+		alert('첨부되지 않은 파일이 있습니다');
+	} else {
+		$('#formActor').submit();
+	}
+});
 
-	$('#btnRemoveFile').click(function(){
-		// 마지막 <input type="file" name="actorFile" class="actorFile">태그를 제거
-		// console.log($('.actorFile').length);
+$('#btnAddFile').click(function() {
+	if($('.actorFile').last().val() == '') { // 마지막 input=file값이 공백이라면
+		alert('첨부하지않은 파일이 이미 존재합니다');
+	} else {
+		let html = '<input type="file" name="actorFile" class="actorFile">';
+		$('#fileDiv').append(html);
+	}
+});
+
+$('#btnRemoveFile').click(function(){
+	if($('.actorFile').length == 0) { // class="actorFile" 없다
+		alert('삭제할 빈 input=file이 존재하지 않습니다');
+	} else {
 		$('.actorFile').last().remove();
-	});
+	}
+});
 </script>
 </html>
