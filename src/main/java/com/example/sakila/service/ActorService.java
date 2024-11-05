@@ -1,7 +1,6 @@
 package com.example.sakila.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +24,7 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
-	public void addActor(ActorForm actorForm) {
+	public void addActor(ActorForm actorForm, String path) {
 		 Actor actor = new Actor();
 		 actor.setFirstName(actorForm.getFirstName());
 		 actor.setLastName(actorForm.getLastName());
@@ -54,7 +53,6 @@ public class ActorService {
 				 int row2 = actorFileMapper.insertActorFile(actorFile);
 				 if(row2 == 1) {
 					 // 물리적 파일 저장
-					 String path = ""; // request.getRealPath("/upload")
 					 try {
 						mf.transferTo(new File(path + filename +"."+ ext));
 					 } catch (Exception e) {
