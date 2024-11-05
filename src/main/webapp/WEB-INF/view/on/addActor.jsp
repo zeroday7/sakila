@@ -68,11 +68,7 @@
 			alert('첨부하지않은 파일이 이미 존재합니다');
 		}
 	});
-	/*
-		<input type="file" name="actorFile" class="actorFile">
-		<input type="file" name="actorFile" class="actorFile">
-		<input type="file" name="actorFile" class="actorFile">
-	*/
+
 	$('#btnRemoveFile').click(function(){
 		// 마지막 <input type="file" name="actorFile" class="actorFile">태그를 제거
 		// console.log($('.actorFile').length);
