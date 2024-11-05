@@ -40,4 +40,14 @@
 	<li class="list-group-item bg-light">
 		<a href="">고객 추가</a>
 	</li>
+	
+	<li class="list-group-item bg-light">
+		::: 배우 관리 :::
+	</li>
+	<li class="list-group-item bg-light">
+		<a href="${pageContext.request.contextPath}/on/actorList">배우 리스트</a>
+	</li>
+	<li class="list-group-item bg-light">
+		<a href="${pageContext.request.contextPath}/on/addActor">배우 추가</a>
+	</li>
 </ul>
