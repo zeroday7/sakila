@@ -37,6 +37,10 @@ public class ActorController {
 		log.debug(actorFileList.toString());
 		log.debug(filmList.toString());
 		
+		model.addAttribute("actor", actor);
+		model.addAttribute("actorFileList", actorFileList);
+		model.addAttribute("filmList", filmList);
+		
 		return "on/actorOne";
 	}
 	
