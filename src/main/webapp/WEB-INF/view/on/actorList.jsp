@@ -21,7 +21,7 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>ACTOR LIST</h1>
-			<table class="table table-striped">
+			<table class="table table-striped" style="width: 80%;">
 				<tr>
 					<td>actorId</td>
 					<td>name</td>

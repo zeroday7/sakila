@@ -26,6 +26,12 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/actorOne
+	public Actor getActorOne(int actorId) {
+		return actorMapper.selectActorOne(actorId);
+	}
+	
+	
 	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
 		Map<String, Object> paramMap = new HashMap<>();
 		int beginRow = (currentPage - 1) * rowPerPage;
