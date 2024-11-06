@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.ActorMapper">
+	
+	<!-- /on/filmOne -->
+	<select id="selectActorListByFilm"
+			parameterType="int"
+			resultType="com.example.sakila.vo.Actor">
+		SELECT 
+			a.actor_id actorId
+			, a.first_name firstName
+			, a.last_name lastName
+		FROM film_actor fa INNER JOIN actor a
+		ON fa.actor_id = a.actor_id
+		WHERE fa.film_id = #{filmId}
+	</select>
+	
+	
 	<select id="selectActorOne"
 			parameterType="int"
 			resultType="com.example.sakila.vo.Actor">

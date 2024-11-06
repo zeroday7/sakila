@@ -31,11 +31,11 @@
 			<form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
 				<div class="mb-3 mt-3">
 					<label for="staffId" class="form-label">STAFF ID:</label>
-					<input id="staffId" name="staffId" type="text" class="form-control" id="staffId" name="staffId">
+					<input id="staffId" name="staffId" type="text" class="form-control" id="staffId" name="staffId" value="1">
 			 	</div>
 			 	<div class="mb-3">
 					<label for="password" class="form-label">STAFF PW:</label>
-					<input id="password" name="password" type="password" class="form-control">
+					<input id="password" name="password" type="password" class="form-control" value="1234">
 				</div>
 				<div class="text-center">
 					<button id ="btn" type="button" class="btn btn-light">Login</button>

@@ -41,6 +41,10 @@
 					<td>${actor.lastUpdate}</td>
 				</tr>
 			</table>
+			<div>
+				<a href="">actor 수정</a>
+			</div>
+			
 			
 			<!-- ACTOR FILE -->
 			<h2>ACTOR FILE</h2>
@@ -50,6 +54,7 @@
 					<td>type</td>
 					<td>size</td>
 					<td>createDate</td>
+					<td>삭제</td>
 				</tr>
 				<c:forEach var="af" items="${actorFileList}">
 					<td>
@@ -58,8 +63,13 @@
 					<td>${af.type}</td>
 					<td>${af.size} Byte</td>
 					<td>${af.createDate}</td>
+					<td><a href="">삭제</a></td>
 				</c:forEach>
 			</table>
+			<div>
+				<a href="">이미지파일 추가</a>
+			</div>
+			
 			<!-- FILM -->
 			<div>
 				<h2>출연 작품</h2>
