@@ -21,6 +21,9 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>ADD ACTOR</h1>
+			
+			<div>${msg}</div>
+			
 			<form id="formActor" method="post" action="${pageContext.request.contextPath}/on/addActor"
 				enctype="multipart/form-data">
 				<table class="table">
