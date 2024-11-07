@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.service.ActorService;
 import com.example.sakila.service.FilmService;
+import com.example.sakila.service.LanguageService;
 import com.example.sakila.vo.Actor;
+import com.example.sakila.vo.Language;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +22,16 @@ import lombok.extern.slf4j.Slf4j;
 public class FilmController {
 	@Autowired FilmService filmService;
 	@Autowired ActorService actorService;
+	@Autowired LanguageService languageService;
 	
+	@GetMapping("/on/addFilm")
+	public String addFilm(Model model) {
+		// languageList
+		List<Language> languageList = languageService.getLanguageList();
+		log.debug(languageList.toString());
+		model.addAttribute("languageList", languageList);
+		return "on/addFilm";
+	}
 	
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
