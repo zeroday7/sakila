@@ -21,7 +21,10 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>ACTOR FILE ADD</h1>
-			<form>
+			<form id="formAddActorFile" 
+				  method="post" enctype="multipart/form-data"
+				  action="${pageContext.request.contextPath}/on/addActorFile">
+				  
 				<table class="table">
 					<tr>
 						<td>actorId</td>
@@ -40,8 +43,38 @@
 						</td>
 					</tr>
 				</table>
+				<button id="btnAddActorFile" type="button">액터파일추가</button>
+			
 			</form>
 		</div>
 	</div>
 </body>
+<script>
+	$('#btnAddActorFile').click(function(){
+		if($('.actorFile').length == 0) {
+			alert('첨부할 파일이 없습니다');
+		} else if($('.actorFile').last().val() == '') {
+			alert('첨부되지 않은 파일이 있습니다');
+		} else {
+			$('#formAddActorFile').submit();
+		}
+	});
+
+	$('#btnAddFile').click(function() {
+		if($('.actorFile').last().val() == '') { // 마지막 input=file값이 공백이라면
+			alert('첨부하지않은 파일이 이미 존재합니다');
+		} else {
+			let html = '<input type="file" name="actorFile" class="actorFile">';
+			$('#fileDiv').append(html);
+		}
+	});
+	
+	$('#btnRemoveFile').click(function(){
+		if($('.actorFile').length == 0) { // class="actorFile" 없다
+			alert('삭제할 빈 input=file이 존재하지 않습니다');
+		} else {
+			$('.actorFile').last().remove();
+		}
+	});
+</script>
 </html>

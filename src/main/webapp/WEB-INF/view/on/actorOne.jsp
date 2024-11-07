@@ -59,13 +59,15 @@
 					<td>삭제</td>
 				</tr>
 				<c:forEach var="af" items="${actorFileList}">
-					<td>
-						<img src="${pageContext.request.contextPath}/upload/${af.filename}.${af.ext}">
-					</td>
-					<td>${af.type}</td>
-					<td>${af.size} Byte</td>
-					<td>${af.createDate}</td>
-					<td><a href="" class="btn btn-warning">삭제</a></td>
+					<tr>
+						<td>
+							<img src="${pageContext.request.contextPath}/upload/${af.filename}.${af.ext}">
+						</td>
+						<td>${af.type}</td>
+						<td>${af.size} Byte</td>
+						<td>${af.createDate}</td>
+						<td><a href="" class="btn btn-warning">삭제</a></td>
+					</tr>
 				</c:forEach>
 			</table>
 			<div>
