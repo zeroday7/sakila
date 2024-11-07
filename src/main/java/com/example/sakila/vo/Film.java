@@ -15,6 +15,6 @@ public class Film {
 	private Integer length; // 기본값 NULL
 	private double replacementCost;
 	private String rating;
-	private String specialFeatures; // 기본값 NULL
+	private String specialFeatures; // 기본값 NULL ex) xxx, yyy, zz,
 	private String lastUpdate;
 }
