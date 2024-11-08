@@ -28,8 +28,8 @@
 			● 2-2) actor_file 삭제 /on/removeActorFile
 						
 			● 3) film_actor 리스트
-			3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
-			3-2) film_actor 삭제 /on/removeFilmActor 
+			● 3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
+			● 3-2) film_actor 삭제 /on/removeFilmActor 
 
 		 -->
 		
@@ -123,10 +123,19 @@
 					</form>
 				</div>
 				
+				<br>
+				
 				<c:forEach var="f" items="${filmList}">
-					<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
-						${f.title}
-					</a>&nbsp;
+					<div>
+						<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}"
+							 class="btn btn-info">
+							${f.title}
+						</a>
+						&nbsp;
+						<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
+							class="btn btn-danger">flim_actor에서 삭제</a>
+						<!-- 삭제시 f.filmId & actor.actorId 필요 -->
+					</div>
 				</c:forEach>
 			</div>
 		</div>
