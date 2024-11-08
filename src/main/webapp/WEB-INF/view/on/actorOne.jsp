@@ -25,7 +25,7 @@
 			
 			● 2) actor_file 리스트
 			● 2-1) actor_file 추가 
-			2-2) actor_file 삭제 /on/removeActorFile
+			● 2-2) actor_file 삭제 /on/removeActorFile
 						
 			● 3) film_actor 리스트
 			3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
@@ -100,6 +100,29 @@
 			<!-- FILM -->
 			<div>
 				<h2>&#128526; 출연 작품</h2>
+				
+				<div>
+					<!-- 출연작 추가 -->
+					<form id="formSearchFilm" method="get" 
+						action="${pageContext.request.contextPath}/on/actorOne"><!-- 영화검색 -->
+						<!-- film 검색시 actorId같이 전송 -->
+						<input type="hidden" name="actorId" value="${actor.actorId}">
+						<input type="text" name="searchTitle">
+						<button id="btnSearchFilm" type="button">film 검색</button>
+					</form>
+					
+					<form id="formAddFilm" method="post"
+						action="${pageContext.request.contextPath}/on/addFilmByActor">
+						<input type="hidden" name="actorId" value="${actor.actorId}">
+						<select size="5" name="filmId">
+							<c:forEach var="sf" items="${searchFilmList}">
+								<option value="${sf.filmId}">${sf.title}</option>
+							</c:forEach>
+						</select>
+						<button id="btnAddFilm" type="button">film 추가</button>
+					</form>
+				</div>
+				
 				<c:forEach var="f" items="${filmList}">
 					<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
 						${f.title}
@@ -109,4 +132,14 @@
 		</div>
 	</div>
 </body>
+<script>
+	// film title검색하는 버턴
+	$('#btnSearchFilm').click(function(){
+		$('#formSearchFilm').submit();
+	});
+	// 출연작(film) 추가하는 버턴
+	$('#btnAddFilm').click(function(){ 
+		$('#formAddFilm').submit();
+	});
+</script>
 </html>
