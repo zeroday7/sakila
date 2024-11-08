@@ -26,6 +26,11 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/modifyActor
+	public int modifyActor(Actor actor) {
+		return actorMapper.updateActor(actor);
+	}
+	
 	// /on/filmOne
 	public List<Actor> getActorListByFilm(int filmId) {
 		return actorMapper.selectActorListByFilm(filmId);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +28,21 @@ public class ActorController {
 	@Autowired ActorService actorService;
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
+	
+	@PostMapping("/on/modifyActor")
+	public String modifyActor(Actor actor) {
+		log.debug(actor.toString());
+		
+		int row = actorService.modifyActor(actor);
+		
+		return "redirect:/on/actorOne?actorId="+actor.getActorId();
+	}
+	@GetMapping("/on/modifyActor")
+	public String modifyActor(Model model, @RequestParam int actorId) {
+		Actor actor = actorService.getActorOne(actorId);
+		model.addAttribute("actor", actor);
+		return "on/modifyActor";
+	}
 	
 	@GetMapping("/on/actorOne")
 	public String actorOne(Model model
