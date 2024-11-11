@@ -11,9 +11,9 @@
 			, f.release_year releaseYear
 			, f.rental_duration rentalDuration
 			, f.rental_rate rentalRate
-			, f.length lenght
+			, f.length length
 			, f.replacement_cost replacementCost
-			, f.rating ration
+			, f.rating rating
 			, fc.category_id categoryId	
 		FROM film f INNER JOIN film_category fc
 		ON f.film_id = fc.film_id
@@ -33,9 +33,9 @@
 			, release_year releaseYear
 			, rental_duration rentalDuration
 			, rental_rate rentalRate
-			, length lenght
+			, length length
 			, replacement_cost replacementCost
-			, rating ration	
+			, rating rating	
 		FROM film
 		ORDER BY film_id DESC
 		LIMIT #{beginRow}, #{rowPerPage}

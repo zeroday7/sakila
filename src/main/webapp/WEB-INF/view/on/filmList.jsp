@@ -44,9 +44,9 @@
 					<td>releaseYear</td>
 					<td>rentalDuration</td>
 					<td>rentalRate</td>
-					<td>lenght</td>
+					<td>length</td>
 					<td>replacementCost</td>
-					<td>ration</td>
+					<td>rating</td>
 				</tr>
 				<c:forEach var="f" items="${filmList}"><!-- filmList -->
 					<tr>
@@ -59,9 +59,9 @@
 						<td>${f.releaseYear}</td>
 						<td>${f.rentalDuration}</td>
 						<td>${f.rentalRate}</td>
-						<td>${f.lenght}</td>
+						<td>${f.length}</td>
 						<td>${f.replacementCost}</td>
-						<td>${f.ration}</td>
+						<td>${f.rating}</td>
 					</tr>
 				</c:forEach>
 			</table>
