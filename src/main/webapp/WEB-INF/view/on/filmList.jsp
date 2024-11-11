@@ -51,7 +51,11 @@
 				<c:forEach var="f" items="${filmList}"><!-- filmList -->
 					<tr>
 						<td>${f.filmId}</td>
-						<td>${f.title}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
+								${f.title}
+							</a>
+						</td>
 						<td>${f.releaseYear}</td>
 						<td>${f.rentalDuration}</td>
 						<td>${f.rentalRate}</td>
