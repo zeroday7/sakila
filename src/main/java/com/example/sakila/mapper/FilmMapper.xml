@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
+	<select id="selectFilmList"
+			parameterType="Map"
+			resultType="Map">
+		SELECT 
+			film_id filmId
+			, title title
+			, release_year releaseYear
+			, rental_duration rentalDuration
+			, rental_rate rentalRate
+			, length lenght
+			, replacement_cost replacementCost
+			, rating ration	
+		FROM film
+		ORDER BY film_id DESC
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+
 	<select id="selectFilmListByTitle"
 			parameterType="String"
 			resultType="com.example.sakila.vo.Film">

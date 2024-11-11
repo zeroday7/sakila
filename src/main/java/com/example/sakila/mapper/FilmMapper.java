@@ -9,6 +9,11 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	// category 있을때 filmList
+	List<Map<String, Object>> selectFilmListByCategory(Map<String, Object> paramMap);
+	
+	// category 없을때 filmList
+	List<Map<String, Object>> selectFilmList(Map<String, Object> paramMap);
 	
 	// /on/actorOne에서 필름 검색시
 	List<Film> selectFilmListByTitle(String searchTitle);

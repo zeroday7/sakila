@@ -26,6 +26,21 @@ public class FilmController {
 	@Autowired ActorService actorService;
 	@Autowired LanguageService languageService;
 	
+	@GetMapping("/on/filmList")
+	public String filmList(@RequestParam(required = false) String category
+							, @RequestParam(defaultValue = "1") int currentPage
+							, @RequestParam(defaultValue = "10") int rowPerPage) {
+		log.debug("category: "+category);
+		log.debug("currentPage: "+currentPage);
+		log.debug("rowPerPage: "+rowPerPage);
+		
+		List<Map<String, Object>> flmList = filmService.getFilmList(category, currentPage, rowPerPage);
+		log.debug("flmList: "+flmList);
+		
+		// Model에 catetory List 추가
+		
+		return "on/filmList";
+	}
 	
 	@PostMapping("/on/addFilm")
 	public String addFilm(FilmForm filmForm) {

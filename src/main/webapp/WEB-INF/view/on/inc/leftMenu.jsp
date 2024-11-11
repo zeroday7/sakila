@@ -35,10 +35,10 @@
 		::: 영화 관리 :::
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="" class="btn">영화 리스트</a>
+		<a href="${pageContext.request.contextPath}/on/filmList" class="btn">필름 리스트</a>
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="${pageContext.request.contextPath}/on/addFilm" class="btn">영화 추가</a>
+		<a href="${pageContext.request.contextPath}/on/addFilm" class="btn">필름 추가</a>
 	</li>
 	
 	
@@ -46,7 +46,7 @@
 		::: 고객 관리 :::
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="">고객 리스트</a>
+		<a href="" class="btn">고객 리스트</a>
 	</li>
 	<li class="list-group-item bg-light">
 		<a href="" class="btn">고객 추가</a>

@@ -1,5 +1,6 @@
 package com.example.sakila.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,25 @@ import com.example.sakila.vo.FilmForm;
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	
+	
+	public List<Map<String, Object>> getFilmList(String category, int currentPage, int rowPerPage) {
+		Map<String, Object> paramMap = new HashMap<>();
+		if(category == null || category.equals("")) {
+			paramMap.put("category", null);
+		} else {
+			paramMap.put("category", category);
+		}
+		int beginRow = (1-currentPage) * rowPerPage;
+		paramMap.put("beginRow", beginRow);
+		paramMap.put("rowPerPage", rowPerPage);
+		
+		if(paramMap.get("category") == null) {
+			return filmMapper.selectFilmList(paramMap);
+		} else {
+			return filmMapper.selectFilmListByCategory(paramMap);
+		}
+	}
 	
 	public List<Film> getFilmListByTitle(String searchWord) {
 		return filmMapper.selectFilmListByTitle(searchWord);
