@@ -18,18 +18,18 @@ public class FilmService {
 	@Autowired FilmMapper filmMapper;
 	
 	
-	public List<Map<String, Object>> getFilmList(String category, int currentPage, int rowPerPage) {
+	public List<Map<String, Object>> getFilmList(Integer categoryId, int currentPage, int rowPerPage) {
 		Map<String, Object> paramMap = new HashMap<>();
-		if(category == null || category.equals("")) {
-			paramMap.put("category", null);
+		if(categoryId == null || categoryId == 0) {
+			paramMap.put("categoryId", null);
 		} else {
-			paramMap.put("category", category);
+			paramMap.put("categoryId", categoryId);
 		}
 		int beginRow = (1-currentPage) * rowPerPage;
 		paramMap.put("beginRow", beginRow);
 		paramMap.put("rowPerPage", rowPerPage);
 		
-		if(paramMap.get("category") == null) {
+		if(paramMap.get("categoryId") == null) {
 			return filmMapper.selectFilmList(paramMap);
 		} else {
 			return filmMapper.selectFilmListByCategory(paramMap);
