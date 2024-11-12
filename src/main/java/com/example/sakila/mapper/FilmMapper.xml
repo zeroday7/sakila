@@ -3,7 +3,7 @@
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
 	<!-- POST : /on/modifyFilm  -->
 	<update id="updateFilm"
-			parameterType="com.example.sakila.vo.Film">
+			parameterType="com.example.sakila.vo.Film"> <!-- 참조null, 숫자0, false -->
 		UPDATE film
 		<set>
 			<if test="title != null">

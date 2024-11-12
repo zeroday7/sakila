@@ -9,12 +9,12 @@ public class FilmForm {
 	private String title; 
 	private String description; // NULL
 	private Integer releaseYear; // NULL
-	private int languageId; 
+	private Integer languageId; 
 	private Integer originalLanguageId; // NULL
-	private int rentalDuration;
-	private double rentalRate;
+	private Integer rentalDuration;
+	private Double rentalRate;
 	private Integer length; // 기본값 NULL
-	private double replacementCost;
+	private Double replacementCost;
 	private String rating; 
 	
 	private List<String> specialFeatures; // 기본값 NULL

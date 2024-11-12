@@ -4,13 +4,13 @@ import lombok.Data;
 
 @Data
 public class Customer {
-	private int customerId; // PK
-	private int storeId; // FK
+	private Integer customerId; // PK
+	private Integer storeId; // FK
 	private String firstName;
 	private String lastName; // FK
 	private String email;
-	private int addressId; // FK
-	private int active;
+	private Integer addressId; // FK
+	private Integer active;
 	private String createDate;
 	private String lastUpdate;
 }

@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Inventory {
-	private int inventoryId; // PK
-	private int filmId; // FK
-	private int storeId; // FK
+	private Integer inventoryId; // PK
+	private Integer filmId; // FK
+	private Integer storeId; // FK
 	private String lastUpdate;
 }
