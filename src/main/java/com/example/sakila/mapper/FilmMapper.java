@@ -9,6 +9,8 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	Integer updateFilm(Film film);
+	
 	Integer deleteFilmByKey(Integer filmId);
 	
 	// categoryId가 null이나 0이 아닐때

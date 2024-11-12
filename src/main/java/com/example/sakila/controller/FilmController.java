@@ -52,7 +52,9 @@ public class FilmController {
 			// return "redirect:/on/filmOne"; // 메세지 추가가 힘든 구현
 		}
 		
-		Integer row = filmService.removeFilmByKey(filmId);
+
+		filmService.removeFilmByKey(filmId);
+
 		return "redirect:/on/filmList";
 	}
 	
