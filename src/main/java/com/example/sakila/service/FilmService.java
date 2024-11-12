@@ -17,6 +17,9 @@ import com.example.sakila.vo.FilmForm;
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
 	
+	public Integer removeFilmByKey(Integer filmId) {
+		return filmMapper.deleteFilmByKey(filmId);
+	}
 	
 	public List<Map<String, Object>> getFilmList(Integer categoryId, int currentPage, int rowPerPage) {
 		Map<String, Object> paramMap = new HashMap<>();

@@ -15,10 +15,24 @@
 		::: 지점 관리 :::
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="" class="btn">지점 리스트</a>
+		<a href="${pageContext.request.contextPath}/on/storeList" class="btn">지점 리스트</a>
+		<!--
+			StoreMapper.selectStroeList() : List<Map> - store x staff x adress
+			StoreService.getStoreList() : List<Map>
+			GET - /on/storeList - StoreController.storeList() - storeList.jsp
+		-->
 	</li>
 	<li class="list-group-item bg-light">
-		<a href="" class="btn">지점 추가</a>
+		<a href="${pageContext.request.contextPath}/on/addStore" class="btn">지점 추가</a>
+		<!-- 
+			GET - /on/addStore 
+				- StoreController.addStore() : staffList 모델추가, search주소검색결과 모델추가 - addStore.jsp 
+		 	
+		 	StoreMapper.insertStore() : Integer
+		 	StoreService.addStore() : Integer
+		 	POST - /on/addStore - StoreController.addStore(Store)
+		 			 
+		 -->
 	</li>
 	
 	<li class="list-group-item bg-light fw-bold">
@@ -33,6 +47,12 @@
 	
 	<li class="list-group-item bg-light fw-bold">
 		::: 영화 관리 :::
+	</li>
+	<li class="list-group-item bg-light">
+		<a href="${pageContext.request.contextPath}/on/languageList" class="btn">언어 리스트</a>
+	</li>
+	<li class="list-group-item bg-light">
+		<a href="${pageContext.request.contextPath}/on/addLanguage" class="btn">언어 추가</a>
 	</li>
 	<li class="list-group-item bg-light">
 		<a href="${pageContext.request.contextPath}/on/filmList" class="btn">필름 리스트</a>
