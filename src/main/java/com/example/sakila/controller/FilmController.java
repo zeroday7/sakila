@@ -34,8 +34,11 @@ public class FilmController {
 	@GetMapping("/on/removeFilm")
 	public String removeFilm(Model model
 							, @RequestParam Integer filmId) {
+		
+		// 필름이 인벤토리에 등록되어 있다면 삭제 불가
 		Integer count = inventoryService.getCountInventoryByFilm(filmId);
 		if(count != 0) {
+			/* 메세지 추가 할려면 ...  but 중복코드 리팩토링 이슈발생 */
 			Map<String, Object> film = filmService.getFilmOne(filmId);
 			log.debug(film.toString());
 			
@@ -45,9 +48,11 @@ public class FilmController {
 			model.addAttribute("actorList", actorList);
 			model.addAttribute("removeFilmMsg", "film이 inventory에 존재합니다");
 			return "on/filmOne";
+			
+			// return "redirect:/on/filmOne"; // 메세지 추가가 힘든 구현
 		}
-		Integer row = filmService.removeFilmByKey(filmId);
 		
+		Integer row = filmService.removeFilmByKey(filmId);
 		return "redirect:/on/filmList";
 	}
 	
