@@ -106,7 +106,7 @@ public class FilmController {
 	
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
-						, @RequestParam int filmId
+						, @RequestParam Integer filmId
 						, @RequestParam(required = false) String searchName) {
 		/*
 		 * + 1) 현재필름 정보
