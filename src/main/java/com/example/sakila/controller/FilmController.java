@@ -111,8 +111,8 @@ public class FilmController {
 		/*
 		 * + 1) 현재필름 정보
 		 * + 2) 전체카테고리 리스트
-		 * 3) 현재필름의 카테고리 리스트
-		 * 4) 검색 배우 리스트(searchName이 null아 아닐때)
+		 * + 3) 현재필름의 카테고리 리스트
+		 * + 4) 검색 배우 리스트(searchName이 null아 아닐때)
 		 * + 5) 현재필름의 배우 리스트
 		 */
 		
@@ -124,6 +124,11 @@ public class FilmController {
 		// 3)
 		List<Map<String, Object>> filmCategoryList 
 				= filmCategoryService.getFilmCategoryListByFilm(filmId);
+		// 4)
+		if(searchName != null) { // 배우이름검색 버턴요청으로 왔다면
+			List<Actor> searchActorList = actorService.getActorListByActor(searchName);
+			model.addAttribute("searchActorList", searchActorList);
+		}
 		
 		// 5)
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);

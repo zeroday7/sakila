@@ -13,6 +13,10 @@ import com.example.sakila.vo.FilmCategory;
 public class FilmCategoryService {
 	@Autowired FilmCategoryMapper filmCategoryMapper;
 	
+	public Integer removeFilmCategory(FilmCategory filmCategory) {
+		return filmCategoryMapper.deleteFilmCategory(filmCategory);
+	}
+	
 	public Integer addFilmCategory(FilmCategory filmCategory) {
 		return filmCategoryMapper.insertFilmCategory(filmCategory);
 	}

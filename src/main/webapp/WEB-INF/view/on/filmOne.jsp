@@ -26,13 +26,11 @@
 			● 2) film_category 리스트
 			● 2-1) film_category 추가 /on/addFilmCategory 
 					-> [이슈] 동일한 카테고리를 한번 더 추가하면 PK중복에러 발생 
-			2-2) film_category 삭제 /on/removeFilmCategory
+			● 2-2) film_category 삭제 /on/removeFilmCategory
 						
 			● 3) film_actor 리스트
 			3-1) film_actor 추가 /on/addActorByFilm -> 액터 "검색" 후 선택
 			3-2) film_actor 삭제 /on/removeFileActor
-			
-			4) invetory 정보
 
 		 -->
 		<div class="col-sm-10">
@@ -71,7 +69,7 @@
 						<div>
 							${fc.name}
 							&nbsp;
-							<a href="">삭제</a>
+							<a href="${pageContext.request.contextPath}/on/removeFilmCategory?filmId=${fc.filmId}&categoryId=${fc.categoryId}">삭제</a>
 						</div>
 					</c:forEach>
 				</div>				
@@ -81,16 +79,23 @@
 			<div>
 				<h2>작품에 출연한 배우들</h2>
 				<div>
-					<form><!-- 배우이름 검색 -->
-						<input type="text" name="searchName">
-						<button type="button">이름검색</button>
+					<form id="formSearchName" 
+						action="${pageContext.request.contextPath}/on/filmOne" 
+						method="get"><!-- 배우이름 검색 -->
+						
+						<input type="hidden" name="filmId" value="${film.filmId}">
+						
+						<input type="text" name="searchName" id="searchName">
+						<button id="btnSearchName" type="button">이름검색</button>
 					</form>
 				
 					<form method="post"><!-- 출연배우 추가 -->
 						<select name="actorId" id="actorId" size="5">
 							<option value="">배우 선택</option>
-							<!-- model.categoryList -->
-							
+							<!-- model.searchActorList -->
+							<c:forEach var="sa" items="${searchActorList}">
+								<option value="${sa.actorId}">${sa.firstName} ${sa.lastName}</option>
+							</c:forEach>
 						</select>
 						<button type="button">출연배우추가</button>
 					</form>
@@ -111,6 +116,14 @@
 	</div>
 </body>
 <script>
+	$('#btnSearchName').click(function() {
+		if($('#searchName').val() == '') {
+			alert('검색이름을 입력하세요');
+		} else {
+			$('#formSearchName').submit();
+		}
+	})
+
 	$('#btnFileCategory').click(function() {
 		if($('#categoryId').val() == '') {
 			alert('categoryId를 선택하세요');

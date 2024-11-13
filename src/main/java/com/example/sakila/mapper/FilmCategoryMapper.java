@@ -10,6 +10,8 @@ import com.example.sakila.vo.FilmCategory;
 @Mapper
 public interface FilmCategoryMapper {
 	
+	Integer deleteFilmCategory(FilmCategory filmCategory);
+	
 	// /on/addFilmCategory
 	Integer insertFilmCategory(FilmCategory filmCategory);
 	
