@@ -18,11 +18,24 @@ import lombok.extern.slf4j.Slf4j;
 public class InventoryController {
 	@Autowired InventoryService inventoryService;
 	
+	@GetMapping("/on/addInventory")
+	public String addInventory(Model model
+								, @RequestParam Integer storeId
+								, @RequestParam(required = false) String searhTitle) {
+		model.addAttribute("storeId", storeId);
+		
+		if(searhTitle != null && !searhTitle.equals("")) {
+			// 영화 검색 목록 모델에 추가
+		}
+		
+		return "on/addInventory";
+	}
+	
 	@GetMapping("/on/inventoryList")
 	public String inventoryList(Model model
 								, @RequestParam Integer storeId
-								, @RequestParam(defaultValue = "1") int currentPage
-								, @RequestParam(defaultValue = "10") int rowPerPage) {
+								, @RequestParam(defaultValue = "1") Integer currentPage
+								, @RequestParam(defaultValue = "10") Integer rowPerPage) {
 		List<Map<String, Object>> inventoryList = 
 				inventoryService.getInventoryListByStore(storeId, currentPage, rowPerPage);
 		model.addAttribute("inventoryList", inventoryList);

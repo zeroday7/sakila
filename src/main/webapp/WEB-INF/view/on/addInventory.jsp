@@ -20,25 +20,17 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>${storeId}지점 INVENTORY LIST</h1>
-			<table class="table">
-				<tr>
-					<td>inventoryId</td>
-					<td>(filmId)title</td>
-					<td>lastUpdate</td>
-				</tr>
-				<c:forEach var="iv" items="${inventoryList}">
+			<h1>인벤토리 추가</h1>
+			<form>
+				<table class="table">
 					<tr>
-						<td>${iv.inventoryId}</td>
+						<td>storeId</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
-								(${iv.filmId}) ${iv.title}
-							</a>
+							<input type="text" name="storeId" value="${storeId}" readonly>
 						</td>
-						<td>${iv.lastUpdate}</td>
 					</tr>
-				</c:forEach>
-			</table>
+				</table>
+			</form>
 		</div>
 	</div>
 </body>
