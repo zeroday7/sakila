@@ -35,7 +35,12 @@
 				</tr>
 				<c:forEach var="c" items="${customerList}">
 					<tr>
-						<td>${c.customerId}</td>
+						<td>
+							<!-- 고객 상세 정보(주소 X 렌탈 X 지불...조인 발생...) -->
+							<a href="">
+								${c.customerId}
+							</a>
+						</td>
 						<td>${c.storeId}</td>
 						<td>${c.firstName}</td>
 						<td>${c.lastName}</td>
@@ -70,6 +75,13 @@
 				<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage+10}">
 					[다음] <!-- if분기 필요 -->
 				</a>
+			</div>
+			
+			<div>
+				<form>
+					<input type="text">
+					<button type="button">이름검색</buttton>
+				</form>
 			</div>
 		</div>
 	</div>
