@@ -9,6 +9,9 @@ import com.example.sakila.vo.Customer;
 
 @Mapper
 public interface CustomerMapper {
+	// /on/addRental
+	List<Customer> selectCustomerListByName(String searchName);
+	
 	List<Customer> selectCustomerList(Map<String, Object> paramMap);
 	
 	Integer insertCustomer(Customer customer);
