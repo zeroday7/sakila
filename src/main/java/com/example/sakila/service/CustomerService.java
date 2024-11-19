@@ -19,6 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	public List<Customer> getCustomerListByName(String searchName) {
+		return customerMapper.selectCustomerListByName(searchName);
+	}
+	
 	public Integer getLastPage(Integer rowPerPage) {
 		return 0;
 	}

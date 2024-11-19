@@ -26,6 +26,12 @@ public class CustomerController {
 	@Autowired StoreService storeService;
 	@Autowired AddressService addressService;
 	
+	@GetMapping("/on/customerOne")
+	public String customerOne(@RequestParam Integer customerId) {
+		// 
+		return "on/customerOne";
+	}
+	
 	@GetMapping("/on/customerList")
 	public String customerList(Model model
 							, @RequestParam(defaultValue = "1") Integer currentPage

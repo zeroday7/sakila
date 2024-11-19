@@ -28,12 +28,21 @@
 				<button type="button" id="btnSearchName">이름검색</button>
 			</form>
 			
-			<form>
+			<form id="formAddRental"
+					method="post"
+					action="${pageContext.request.contextPath}/on/addRental">
 				<table class="table">
 					<tr>
 						<td>customerId</td>
 						<td>
 							<select name="customerId" id="customerId" size="5">		
+								<c:forEach var="c" items="${customerList}">
+									<option value="${c.customerId}">
+										${c.firstName}
+										${c.lastName}
+										${c.email}
+									</option>
+								</c:forEach>
 							</select> 
 						</td>
 					</tr>
@@ -48,7 +57,7 @@
 					</tr>
 					
 					<tr>
-						<td>inventoryId</td>
+						<td>staffId</td>
 						<td>
 							<input type="text" name="staffId" id="staffId" 
 								value="${loginStaff.staffId}" readonly> 
@@ -68,6 +77,16 @@
 	</div>
 </body>
 <script>
+	$('#btnAddRental').click(function(){
+		if($('#customerId').val() == null || $('#customerId').val() == '') {
+			alert('고객이름 검색 후 아이디를 선택하세요');
+		} else if($('#rentalDate').val() == '') {
+			alert('렌탈 날짜를 입력하세요');
+		} else {
+			$('#formAddRental').submit();
+		}
+	})
+
 	$('#btnSearchName').click(function(){
 		if($('#searchName').val() == '') {
 			alert('검색이름을 입력하세요');
