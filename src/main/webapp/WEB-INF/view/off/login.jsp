@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 충돌코드 추가 -->
-
+<!-- 
+	충돌 테스트
+	
+ -->
 <!DOCTYPE html>
 <html>
 <head>
